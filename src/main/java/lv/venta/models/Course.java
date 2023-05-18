@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -48,9 +49,9 @@ public class Course {
 	@Max(20)
 	private int creditPoints;
 	
-	@OneToOne
+	@ManyToMany
 	@JoinColumn(name = "idp")
-	private Professor professor;
+	private Collection<Professor> professor;
 	
 	@OneToMany(mappedBy = "course")
 	@ToString.Exclude

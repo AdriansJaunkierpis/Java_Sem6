@@ -1,10 +1,15 @@
 package lv.venta.models;
 
+import java.util.Collection;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -47,9 +52,12 @@ public class Professor {
 	@NotNull
 	private Degree degree;
 	
-	@OneToOne(mappedBy = "professor")
+	@ManyToMany
+	@JoinTable(name = "prof_course_table",
+	joinColumns = @JoinColumn(name = "idc"),
+	inverseJoinColumns = @JoinColumn(name = "idp"))
 	@ToString.Exclude
-	private Course course;
+	private Collection<Course> course;
 
 	public Professor(String name, String surname, Degree degree) {
 		this.name = name;

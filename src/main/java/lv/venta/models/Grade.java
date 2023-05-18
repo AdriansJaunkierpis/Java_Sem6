@@ -33,7 +33,7 @@ public class Grade {
 	@Setter(value = AccessLevel.NONE)
 	private long idg;
 	
-	@Column(name = "Value")
+	@Column(name = "GValue")
 	@Min(0)
 	@Max(10)
 	private int gvalue;

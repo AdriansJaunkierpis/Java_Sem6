@@ -48,6 +48,7 @@ public class Professor {
 	private Degree degree;
 	
 	@OneToOne(mappedBy = "professor")
+	@ToString.Exclude
 	private Course course;
 
 	public Professor(String name, String surname, Degree degree) {

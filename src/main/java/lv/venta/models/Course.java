@@ -57,8 +57,11 @@ public class Course {
 
 	public Course(
 			@NotNull @Size(min = 1, max = 25) @Pattern(regexp = "[A-Z]{1}[a-z\\ ]+", message = "Only Latin letters and space") String title,
-			@NotNull @Min(0) @Max(10) int creditPoints) {
+			@Min(0) @Max(20) int creditPoints, Professor professor) {
 		this.title = title;
 		this.creditPoints = creditPoints;
+		this.professor = professor;
 	}
+
+	
 }

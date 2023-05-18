@@ -1,5 +1,7 @@
 package lv.venta.models;
 
+import java.util.Collection;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -49,6 +51,9 @@ public class Course {
 	@OneToOne
 	@JoinColumn(name = "idp")
 	private Professor professor;
+	
+	@OneToMany(mappedBy = "course")
+	private Collection<Grade> grades;
 
 	public Course(
 			@NotNull @Size(min = 1, max = 25) @Pattern(regexp = "[A-Z]{1}[a-z\\ ]+", message = "Only Latin letters and space") String title,

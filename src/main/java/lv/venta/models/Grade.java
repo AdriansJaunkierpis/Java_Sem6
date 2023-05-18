@@ -34,11 +34,9 @@ public class Grade {
 	@Column(name = "Value")
 	@Min(0)
 	@Max(10)
-	private int value;
+	private int gvalue;
 
 	public Grade(@Min(0) @Max(10) int value) {
-		this.value = value;
-	}
-	
-	
+		this.gvalue = value;
+	}	
 }

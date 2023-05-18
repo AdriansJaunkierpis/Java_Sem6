@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "Student") //table in DB
+@Table(name = "Student_table") //table in DB
 @Entity
 @Getter
 @Setter
@@ -29,13 +29,13 @@ public class Student {
 	@Setter(value = AccessLevel.NONE)
 	private long ids;
 	
-	@Column(name = "name")
+	@Column(name = "Name")
 	@NotNull
 	@Size(min = 1, max = 20)
 	@Pattern(regexp = "[A-Z]{1}[a-z\\ ]+", message = "Only Latin letters and space")
 	private String name;
 	
-	@Column(name = "surname")
+	@Column(name = "Surname")
 	@NotNull
 	@Size(min = 1, max = 20)
 	@Pattern(regexp = "[A-Z]{1}[a-z\\ ]+", message = "Only Latin letters and space")

@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "Course") //table in DB
+@Table(name = "Course_table") //table in DB
 @Entity
 @Getter
 @Setter
@@ -38,9 +38,8 @@ public class Course {
 	private String title;
 	
 	@Column(name = "creditPoints")
-	@NotNull
 	@Min(0)
-	@Max(10)
+	@Max(20)
 	private int creditPoints;
 
 	public Course(

@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "Grade") //table in DB
+@Table(name = "Grade_table") //table in DB
 @Entity
 @Getter
 @Setter

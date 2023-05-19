@@ -1,5 +1,7 @@
 package lv.venta.models;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import jakarta.persistence.Column;
@@ -52,12 +54,9 @@ public class Professor {
 	@NotNull
 	private Degree degree;
 	
-	@ManyToMany
-	@JoinTable(name = "prof_course_table",
-	joinColumns = @JoinColumn(name = "idc"),
-	inverseJoinColumns = @JoinColumn(name = "idp"))
+	@ManyToMany(mappedBy = "professors")
 	@ToString.Exclude
-	private Collection<Course> course;
+	private Collection<Course> courses = new ArrayList<>();
 
 	public Professor(String name, String surname, Degree degree) {
 		this.name = name;
@@ -65,5 +64,15 @@ public class Professor {
 		this.degree = degree;
 	}
 	
+	public void addCourse(Course inputCourse) {
+		if (!courses.contains(inputCourse)) {
+			courses.add(inputCourse);
+		}
+	}
 	
+	public void removeCourse(Course inputCourse) {
+		if(courses.contains(inputCourse)) {
+			courses.remove(inputCourse);
+		}
+	}
 }

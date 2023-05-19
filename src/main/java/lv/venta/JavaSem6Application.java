@@ -1,5 +1,8 @@
 package lv.venta;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -32,7 +35,9 @@ public class JavaSem6Application {
 				
 				Professor p1 = new Professor("Juris", "Zagars", Degree.phd);
 				Professor p2 = new Professor("Dmitrijs", "Smirnovs", Degree.phd);
+				Professor p3 = new Professor("Karina", "Skirmante", Degree.mg);
 				prRepo.save(p1);
+				prRepo.save(p2);
 				prRepo.save(p2);
 				
 				Student s1 = new Student("Janis", "Berzins");
@@ -40,10 +45,25 @@ public class JavaSem6Application {
 				stRepo.save(s1);
 				stRepo.save(s2);
 				
-				Course c1 = new Course("Haosa teorija", 4, p1);
-				Course c2 = new Course("Ekonomikas pamati", 2, p2);
+				Course c1 = new Course("Haosa teorija", 4, new ArrayList<>(Arrays.asList(p1)));
+				Course c2 = new Course("Ekonomikas pamati", 2, new ArrayList<>(Arrays.asList(p2)));
+				Course c3 = new Course("Dabaszinatnu pamati", 2, new ArrayList<>(Arrays.asList(p1)));
+				Course c4 = new Course("Java", 4, new ArrayList<>(Arrays.asList(p2, p3)));
 				coRepo.save(c1);
 				coRepo.save(c2);
+				coRepo.save(c3);
+				coRepo.save(c4);
+				
+				c1.addProfessor(p1);
+				c2.addProfessor(p2);
+				c3.addProfessor(p1);
+				c4.addProfessor(p2);
+				c4.addProfessor(p3);
+				
+				coRepo.save(c1);
+				coRepo.save(c2);
+				coRepo.save(c3);
+				coRepo.save(c4);
 				
 				grRepo.save(new Grade(5, s1, c1));
 				grRepo.save(new Grade(7, s1, c2));
